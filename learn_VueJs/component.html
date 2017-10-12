@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+</head>
+<body>
+  <div id="myApp">
+    <ol>
+      <game-item v-for="item in games" v-bind:game="item"></game-item>
+    </ol>
+  </div>
+  <script>
+    // 组件定义：game - item 
+    Vue.component('game-item',{
+      props:['game'],
+      template:'<li>{{game.title}} , 玩了{{game.time}}小时</li>'
+    })
+    
+    var myApp = new Vue({
+      el: '#myApp',
+      data: {
+        seen: true,
+        games: [
+          { title: 'LOL', time: 2 },
+          { title: '王者荣耀', time: 2.5 },
+          { title: '吃鸡大逃亡', time: 3 },
+        ]
+      }
+    })
+  </script>
+</body>
+</html>
