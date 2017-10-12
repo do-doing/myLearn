@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+</head>
+
+<body>
+  <div id="myApp">
+    <p>你最喜欢的队员是:{{personName}}</p>
+    <label>输入框: </label> <input v-model="personName" type="text">
+    <br>
+    <br>
+    <label>下拉框: </label>
+    <select v-model="personName">
+      <option value="kevin">kevin</option>
+      <option value="stephen">stephen</option>
+      <option value="philips">philips</option>
+    </select>
+  </div>
+  <script>
+    var myApp = new Vue({
+      el:'#myApp',
+      data:{
+        personName:'kevin'
+      }   
+    })
+  </script>
+</body>
+
+</html>

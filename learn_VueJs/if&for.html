@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+</head>
+
+<body>
+  <div id="myApp">
+    <h3 v-if='seen'>如果你是真的,我才出现 <small>条件判断,true & false</small></h3>
+    <ol>
+      <li v-for="person in team">队员名: {{person.name}} / {{person.age}} 岁</li>
+    </ol>
+  </div>
+  <script>
+    var myApp = new Vue({
+      el: '#myApp',
+      data: {
+        seen: true,
+        team: [
+          { name: 'kevin', age: 25 },
+          { name: 'stephen', age: 24 },
+          { name: 'philips', age: 26 },
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>

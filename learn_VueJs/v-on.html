@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+</head>
+
+<body>
+  <div id="myApp">
+    <p>你最喜欢的队员是: {{personName}}</p>
+    <button v-on:click="btnClick('kevin')">kevin</button>
+    <button v-on:click="btnClick('stephen')">stephen</button>
+    <button v-on:click="btnClick('philips')">philips</button>
+    <button @click="btnClick('BOSS!')">BOSS!</button>
+    <!-- @click 等同于 v-on:click-->
+  </div>
+  <script>
+    var myApp = new Vue({
+      el:'#myApp',
+      data:{
+        personName:'未知'
+      },
+      methods:{
+        btnClick:function(pname){
+          this.personName = pname;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
