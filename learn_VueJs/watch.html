@@ -11,7 +11,36 @@
 </head>
 
 <body>
+  <h3>用于监听变量的变化，然后进行相应的处理。</h3>
+  <div id="myApp">
+    <p>新款iPhone8plus（256GB）售价为：{{price}}美元， 含税价格为：{{priceInTax}}美元，折合人民币：{{priceRMB}}元<br>
+      <small>(页面第一次加载时候由于价格没有变化，所以watch不会计算出含税价和人民币价)</small></p>
+    <button @click="btnClick(10)">在澳门购买涨价10美元</button>
+  </div>
+  <script>
+    var myApp = new Vue({
+      el: '#myApp',
+      data: {
+        price: 0,
+        priceInTax: 0,
+        priceRMB: 0,    //需要作为date属性
+      },
+      watch: {
+        price: function (newVal, oldVal) {
+          console.log(newVal, oldVal)
+          this.priceInTax = Math.round(this.price * 1.08);
+          this.priceRMB = Math.round(this.priceInTax * 6.15)
 
+        }
+      },
+      methods: {
+        btnClick: function (newPrice) {
+          this.price += newPrice;
+        }
+      }
+    })
+    myApp.price = 949;  //所以函数执行完后强行更改价格
+  </script>
 </body>
 
 </html>
