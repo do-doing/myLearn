@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>计算属性</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+
+<body>
+  <h3>处理元数据，便于进行二次利用（比如：消费税自动计算功能）</h3>
+  <div id="myApp">
+    <p>新款iPhone8plus（256GB）售价为：{{price}}美元， 含税价格为：{{priceInTax}}美元，折合人民币：{{priceRMB}}元</p>
+  </div>
+<script>
+  var myApp = new Vue({
+    el: '#myApp',
+    data: {
+      price: '949',
+    },
+    computed: {
+      priceInTax:function(){
+        return this.price * 1.08;
+      },
+      priceRMB:function(){
+        return Math.round(this.priceInTax * 6.15);
+      }
+    }
+  })
+</script>
+</body>
+
+</html>
