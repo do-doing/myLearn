@@ -23,7 +23,7 @@
     },
     computed: {
       priceInTax:function(){
-        return this.price * 1.08;
+        return Math.round(this.price * 1.08);
       },
       priceRMB:function(){
         return Math.round(this.priceInTax * 6.15);
