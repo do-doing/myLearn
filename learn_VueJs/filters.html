@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>过滤器</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+</head>
+<body>
+  <div id="myApp">
+    <h3>格式化变量内容的输出（日期格式化，字母大小写）</h3>
+    <p>{{message}}</p>
+    <p>大写： {{message | toupper }}</p>
+    <hr>
+    <p>我现在Vue.js的学习进度大概{{num}}(百分比{{num|topercentage}})</p>
+  </div>
+  <script>
+    var myApp = new Vue({
+      el:'#myApp',
+      data:{
+        message:'hello vue.js world',
+        num:0.33
+      },
+      filters:{
+        toupper:function(value){
+          return value.toUpperCase();
+        },
+        topercentage:function(value){
+          return value *100+'%';
+        }
+      }
+    })
+  </script>
+</body>
+</html>
