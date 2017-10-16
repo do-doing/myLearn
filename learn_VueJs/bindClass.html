@@ -23,10 +23,6 @@
     <p v-bind:class="{active:isActive}">红色文本1</p>
     <p :class="{active:isActive}">红色文本2</p>
     <button @click="btnClick">去掉class</button>
-    <br>
-    <br>
-    <br>
-    <button v-on:mouseenter="btnHover">你碰我加上class</button>
   </div>
   <script>
     var myApp = new Vue({
@@ -36,10 +32,7 @@
       },
       methods:{
         btnClick:function(){
-          this.isActive = false;
-        },
-        btnHover:function(){
-          this.isActive = true;
+          this.isActive = !this.isActive;
         }
       }
     })
