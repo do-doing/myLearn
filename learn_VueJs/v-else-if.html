@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>条件渲染</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+<body>
+  <div id="myApp">
+    <h3>判断Vue.js的变量的值,然后执行页面渲染逻辑</h3>
+    <small>
+      v-if <br>
+      v-else-if <br>
+      v-else
+    </small>
+    <p v-if="result == 0">成绩未公布</p>
+    <p v-else-if="result < 60">{{result}}分-考试不及格</p>
+    <p v-else-if="result < 80">{{result}}分-仍需努力</p>
+    <p v-else>{{result}}分-考得不错</p>
+    <button @click="btnClick">获取考试成绩</button>
+  </div>
+  <script>
+    var app = new Vue({
+      el:'#myApp',
+      data:{
+        result:'0'
+      },
+      methods:{
+        btnClick:function(){
+          this.result = Math.round(Math.random()*100);
+        }
+      }
+    })
+  </script>
+</body>
+</html>
