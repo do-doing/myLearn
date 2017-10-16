@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS对象迭代</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+</head>
+<body>
+  <h3>循环js对象,把对象内容循环显示到页面上</h3>
+  <div id="myApp">
+    <p v-for="(value,key) in myGame">
+      {{key}} : {{value}}
+    </p>
+  </div>
+  <script>
+    var myApp = new Vue({
+      el:'#myApp',
+      data:{
+        myGame:{
+          title:'绝地求生：大逃杀',
+          pubdate:'2017年3月23日',
+          price:98,
+          category:'fps',
+          by:'Bluehole,Inc.'
+        }
+      }
+    })
+  </script>
+</body>
+</html>
