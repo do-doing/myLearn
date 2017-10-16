@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h3>为html标签绑定样式单class对象</h3>
+  <div id="myApp">
+    <p v-bind:class="{active:isActive}">红色文本1</p>
+    <p :class="{active:isActive}">红色文本2</p>
+    <button @click="btnClick">去掉class</button>
+    <br>
+    <br>
+    <br>
+    <button v-on:mouseenter="btnHover">你碰我加上class</button>
+  </div>
+  <script>
+    var myApp = new Vue({
+      el: '#myApp',
+      data: {
+        active: true,
+        big:true
+      },
+      methods: {
+        btnClick: function () {
+          this.isActive = false;
+        },
+        btnHover: function () {
+          this.isActive = true;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
