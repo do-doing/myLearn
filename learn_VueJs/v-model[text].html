@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>表单控件绑定</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+</head>
+<body>
+  <h3>为表单控件元素创建双向数据绑定(将js变量的值'快速'设定到控件上,然后将用户输入的内容'快速'设置回js变量)</h3>
+  <h4>表单控件绑定</h4>
+  <div id="myApp">
+    <input type="text" v-model="message" placeholder="编辑吧">
+    <p>Message is {{message}}</p>
+    <button @click="btnClick">获取message</button>
+  </div>
+  <script>
+    var myApp = new Vue({
+      el:'#myApp',
+      data:{
+        message:'学习Vue.js',
+      },
+      methods:{
+        btnClick:function(){
+          alert(this.message)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
