@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件处理器</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+</head>
+<body>
+  <h3>页面元素的事件绑定（click,keyup,load等）</h3>
+  <div id="myApp">
+    <input id="txtName" v-on:keyup="txtKeyup($event)" type="text">
+    <button id="btnSubmit" v-on:click="btnClick($event)">提交</button>
+  </div>
+  <script>
+    var myApp = new Vue({
+      el:'#myApp',
+      data:{},
+      methods:{
+        txtKeyup:function(event){
+          this.debugLog(event);
+        },
+        btnClick:function(event){
+          this.debugLog(event);
+        },
+        debugLog:function(event){
+          console.log(
+            event.srcElement.tagName,
+            event.srcElement.id,
+            event.srcElement.innerHTML,
+            event.key?event.key:""  //判断有没有键盘操作
+          )
+        }
+      }
+    })
+  </script>
+</body>
+</html>
