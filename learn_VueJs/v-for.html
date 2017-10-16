@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>列表渲染</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+<body>
+  <h3>循环数组元素,整理内容显示到页面上</h3>
+  <div id="myApp">
+    <ul>
+      <li v-for="(game,index) in games">{{index+1}} {{game.title}} / 玩了{{game.time}}小时</li>
+    </ul>
+  </div>
+  <script>
+    var myApp = new Vue({
+      el:'#myApp',
+      data:{
+        games: [
+          { title: 'LOL', time: 2 },
+          { title: '王者荣耀', time: 2.5 },
+          { title: '吃鸡大逃亡', time: 3 },
+        ]
+      }
+    })
+  </script>
+</body>
+</html>

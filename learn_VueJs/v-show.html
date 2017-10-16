@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>元素显示</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+<body>
+  <h3>是否显示html元素(v-show设置的标签在html DOM中不会消失)</h3>
+  <small>v-show=true</small>
+  <div id="myApp">
+    <p v-show="result">现在暂时出现</p>
+    <button @click="btnClick">隐藏/出现</button>
+  </div>
+</body>
+<script>
+  var myApp = new Vue({
+    el:'#myApp',
+    data:{
+      result:true
+    },
+    methods:{
+      btnClick:function(){
+        this.result = !this.result
+      }
+    }
+  })
+</script>
+</html>
