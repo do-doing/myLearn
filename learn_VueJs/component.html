@@ -8,27 +8,60 @@
   <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
 </head>
 <body>
+  <h3>组件就是页面上的一小块区域内容,完成一个小的页面功能</h3>
   <div id="myApp">
+    <!-- 自定义一个标记 -->
+    <today-weather v-bind:action="action[1]"></today-weather> 
     <ol>
       <game-item v-for="item in games" v-bind:game="item"></game-item>
     </ol>
+    <hr>
+    <br>
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
   </div>
+  
   <script>
-    // 组件定义：game - item 
-    Vue.component('game-item',{
-      props:['game'],
-      template:'<li>{{game.title}} , 玩了{{game.time}}小时</li>'
-    })
-    
+    // 组件定义：today-weather
+    // Vue.component('today-weather',{
+    //     template:'<b>今天下雨,出不去了,干什么呢,玩游戏吧!</b>'
+    // })
+
+    // 组件定义：game-item 
+    // Vue.component('game-item',{
+    //   props:['game'],
+    //   template:'<li>{{game.title}} , 玩了{{game.time}}小时</li>'
+    // })
     var myApp = new Vue({
       el: '#myApp',
       data: {
-        seen: true,
         games: [
           { title: 'LOL', time: 2 },
           { title: '王者荣耀', time: 2.5 },
           { title: '吃鸡大逃亡', time: 3 },
-        ]
+        ],
+        action:['听音乐','玩游戏','看电影'],
+        counter: 0
+      },
+      components:{
+        'game-item':{
+          props: ['game'],
+          template: '<li>{{game.title}} , 玩了{{game.time}}小时</li>'
+        },
+        'today-weather':{
+          props: ['action'],
+          template: '<b>今天下雨,出不去了,干什么呢,{{action}}吧!</b>'
+        },
+        'simple-counter':{
+          template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+          // 组件实例中 data 必须是一个函数
+          data: function () {
+              return {
+                counter: 0
+              }
+            }
+        }
       }
     })
   </script>
