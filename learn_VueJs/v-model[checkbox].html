@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>表单复选框</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+
+<body>
+
+  <div id="myApp">
+    <input id="red" type="checkbox" value="red" v-model="checkedColors">
+    <label for="red">红色</label>
+    <input id="blue" type="checkbox" value="blue" v-model="checkedColors">
+    <label for="blue">蓝色</label>
+    <input id="green" type="checkbox" value="green" v-model="checkedColors">
+    <label for="green">绿色</label>
+    <p>你选择的颜色是:{{checkedColors}}</p>
+  </div>
+  <script>
+    var myApp = new Vue({
+      el:'#myApp',
+      data:{
+        checkedColors:[]
+      }
+    })
+  </script>
+</body>
+
+</html>
