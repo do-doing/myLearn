@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>表单下拉框</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+</head>
+<body>
+  <div id="myApp">
+    <h3>你最喜爱的NBA球星是:</h3>
+    <select v-model="likedNBAStar" style="width:200px;">
+      <option>科比</option>
+      <option>詹姆斯</option>
+      <option>哈登</option>
+      <option>库里</option>
+      <option>杜兰特</option>
+    </select>
+    <hr>
+    <h3>我的全明星:(按住ctrl可多选)</h3>
+    <select v-model="likedNBAStars" multiple style="width:200px;height:200px;">
+      <option>科比</option>
+      <option>詹姆斯</option>
+      <option>哈登</option>
+      <option>库里</option>
+      <option>杜兰特</option>
+      <option>格里芬</option>
+      <option>保罗</option>
+      <option>罗斯</option>
+      <option>戴维斯</option>
+    </select>
+    <hr>
+    <h3>结果</h3>
+    <p>我最喜欢:{{likedNBAStar}}</p>
+    <p>我的全明星:{{likedNBAStars}},{{likedNBAStars.length}}位</p>
+  </div>
+  <script>
+    var myApp = new Vue({
+      el:'#myApp',
+      data:{
+        likedNBAStar:'',
+        likedNBAStars:[]
+      }
+    })
+  </script>
+</body>
+</html>

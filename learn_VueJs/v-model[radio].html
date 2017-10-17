@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>表单单选按钮</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="myApp">
+    <h3>选择性别</h3>
+    <input type="radio" id="male" value="男" v-model="pickedSex">
+    <label for="male">男 </label>
+    <input type="radio" id="female" value="女" v-model="pickedSex">
+    <label for="female">女 </label>
+    <hr>
+    <h3>选择爱好</h3>
+    <input type="radio" id="game" value="玩游戏" v-model="pickedHobby">
+    <label for="game">玩游戏 </label>
+    <input type="radio" id="music" value="听音乐" v-model="pickedHobby">
+    <label for="music">听音乐 </label>
+    <hr>
+    <h3>选择爱好</h3>
+    <p>性别:{{pickedSex}}</p>
+    <p>爱好:{{pickedHobby}}</p>
+  </div>
+  <script>
+    var myApp = new Vue({
+      el: '#myApp',
+      data: { 
+        pickedSex:"",
+        pickedHobby:""
+      }
+    })
+  </script>
+</body>
+
+</html>
