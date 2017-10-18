@@ -9,8 +9,11 @@
 </head>
 <body>
   <h3>组件就是页面上的一小块区域内容,完成一个小的页面功能</h3>
+  <h3>Vue.js的组件不仅可以单独声明注册使用,还可以在Vue实例中进行局部注册使用</h3>
+  <hr>
   <div id="myApp">
     <!-- 自定义一个标记 -->
+    <today-date></today-date>
     <today-weather v-bind:action="action[1]"></today-weather> 
     <ol>
       <game-item v-for="item in games" v-bind:game="item"></game-item>
@@ -23,16 +26,17 @@
   </div>
   
   <script>
-    // 组件定义：today-weather
-    // Vue.component('today-weather',{
-    //     template:'<b>今天下雨,出不去了,干什么呢,玩游戏吧!</b>'
-    // })
+    //组件使用的几种方法
 
-    // 组件定义：game-item 
-    // Vue.component('game-item',{
-    //   props:['game'],
-    //   template:'<li>{{game.title}} , 玩了{{game.time}}小时</li>'
-    // })
+    //组件定义：today-date (全局)
+    Vue.component('today-date',{
+        template:'<b>2017年10月1日</b>'
+    })
+    var todayWeather = {
+       props: ['action'],
+       template: '<b>今天下雨,出不去了,干什么呢,{{action}}吧!</b>',
+    }
+
     var myApp = new Vue({
       el: '#myApp',
       data: {
@@ -44,18 +48,16 @@
         action:['听音乐','玩游戏','看电影'],
         counter: 0
       },
+      //组件局部注册使用
       components:{
         'game-item':{
           props: ['game'],
           template: '<li>{{game.title}} , 玩了{{game.time}}小时</li>'
         },
-        'today-weather':{
-          props: ['action'],
-          template: '<b>今天下雨,出不去了,干什么呢,{{action}}吧!</b>'
-        },
+        'today-weather': todayWeather,
         'simple-counter':{
           template: '<button v-on:click="counter += 1">{{ counter }}</button>',
-          // 组件实例中 data 必须是一个函数
+          //// 组件实例中 data 必须是一个函数
           data: function () {
               return {
                 counter: 0
