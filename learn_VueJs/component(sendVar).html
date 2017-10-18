@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组件:传递变量</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+<body>
+  <h3>为组件传递变量数据,制作可接受变量的组件</h3>
+  <div id="myApp">
+    <label>请输入你的名字</label><input type="text" v-model.lazy ="myName">
+    <say-hello :pname="myName"/>
+  </div>
+  <script>
+    Vue.component('say-hello',{
+      props:['pname'],
+      template:'<p>您好,<strong>{{pname}}</strong>..</p>',
+    })
+    var myApp = new Vue({
+      el:'#myApp',
+      data:{
+        myName:'kevin'
+      }
+    })
+  </script>
+</body>
+</html>
