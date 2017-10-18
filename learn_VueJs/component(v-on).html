@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组件:事件传递</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+<body>
+  <div id="myApp">
+    <h3>v-on 侦听组件事件,当组件触发事件后进行事件处理</h3>
+    <h3>$emit 触发时间,并将数据提交给事件侦听者</h3>
+    <hr>
+    <p>'加法'</p>
+    <!-- a/b 参数 监听子组件add_event方法的 getAddResult-->
+    <add-method :a="6" :b="12" v-on:add_event="getAddResult"></add-method>
+    <h3>{{result}}</h3>
+  </div>
+  <script>
+    //全局子组件定义
+    Vue.component('add-method',{
+      //接收两个参数a,b
+      props:['a','b'],
+      //按钮按下时调用子组件方法 相加
+      template:'<div><button v-on:click="add">加+</button></div>',
+      methods:{
+        add:function(){
+          var value = 0;
+          value = this.a+this.b;
+          //触发add_event 把子组件返回给父组件的getAddResult
+          this.$emit('add_event',{
+            result: value
+          })
+        }
+      }
+    })
+    var myApp = new Vue({
+      el:'#myApp',
+      data:{
+        result:0
+      },
+      methods:{
+        //侦听到add_event 的值 / pval是$emit的第二个参数
+        getAddResult:function(pval){
+          this.result = pval.result;
+                        //子组件的result
+        }
+      }
+    })
+  </script>
+</body>
+</html>
