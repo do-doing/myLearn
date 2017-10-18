@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组件:表行组件</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="myApp">
+    <table border="1">
+      <thead>
+        <tr>
+          <th>编号</th>
+          <th>游戏名称</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- is 属性 -->
+        <tr is="my-row1"></tr>
+        <tr is="my-row2"></tr>
+        <tr is="my-row3"></tr>
+        <!-- <my-row1></my-row1>
+        <my-row2></my-row2>
+        <my-row3></my-row3> -->
+      </tbody>
+    </table>
+  </div>
+  <script>
+    Vue.component('my-row1', {
+      template: '<tr><td>1).</td><td>塞尔达传说:荒野之息</td></tr>'
+    })
+    Vue.component('my-row2', {
+      template: '<tr><td>2).</td><td>新马里奥塞车</td></tr>'
+    })
+    Vue.component('my-row3', {
+      template: '<tr><td>3).</td><td>喷射乌贼娘2代</td></tr>'
+    })
+    var myApp = new Vue({
+      el: '#myApp',
+      data: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>
