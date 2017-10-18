@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组件:参数验证</title>
+      <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+<body>
+  <h3>props:组件参数验证语法,为组件中接受到变量进行逻辑验证</h3>
+  <div id="myApp">
+    <p>资料</p>
+    <show-member-info name="kevin" :age="222" :detail="{address:'earth',language:'通用'}"></show-member-info>
+  </div>
+  <script>
+    Vue.component('show-member-info',{
+      props:{
+        name:{
+          type:String,
+          required:true,    //必须输入
+        },
+        age:{
+          type:Number,
+          validator:function(value){
+            return value >=0 && value <=130;
+          }
+        },
+        detail:{
+          type:Object,
+          default:function(){ //默认值
+            return{
+              address:'ZH',
+              language:'Chinese',
+            }
+          }
+        }
+      },
+      template:'<p>姓名:{{this.name}}<br>'
+      +'年龄:{{this.age}}岁<br>'
+      +'地址:{{this.detail.address}}<br>'
+      +'语言:{{this.detail.language}}</p>'
+    })
+    var myApp = new Vue({
+      el:'#myApp'
+    })
+  </script>
+</body>
+</html>
