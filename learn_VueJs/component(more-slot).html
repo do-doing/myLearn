@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>slot命名</title>
+        <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+<body>
+  <h3>在子组件中通过为多个slot进行命名,来接受父组件的不同内容的数据</h3>
+  <small>组件参数不支持驼峰命名</small><br><br>
+  <div id="myApp">
+    <nba-all-star c="奥尼尔" pf="加内特">
+      <span slot="sf">皮尔斯</span>
+      <span slot="sg">雷阿伦</span>
+      <span slot="pg">隆多</span>
+    </nba-all-star>
+  </div>
+  <script>
+    Vue.component('nba-all-star',{
+       props:['c','pf'],
+      template:'<div>'
+        + '<div>中锋: {{c}} </div>'
+        + '<div>大前: {{pf}} </div>'
+        + '<div>小前: <slot name="sf"></slot></div>'
+        + '<div>分卫: <slot name="sg"></slot></div>'
+        + '<div>控卫: <slot name="pg"></slot></div>'
+        + '</div>'
+      
+    })
+    var myApp = new Vue({
+      el:'#myApp'
+    })
+  </script>
+</body>
+</html>
