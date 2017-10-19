@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-for指令</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <!-- 项 in 迭代目标 -->
+      <!-- <li v-for="food in foodList">{{food}}</li> -->
+      <li v-for="food in foodList">{{food.name}} : {{food.price}}块 (配{{food.drink}})</li>
+    </ul>
+  </div>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        // foodList:['白切鸡', '烧鸭', '猪脚']
+        foodList:[{
+          name:'白切鸡饭',
+          price:'12',
+          drink:'可乐'
+        },{
+          name: '烧鸭饭',
+          price: '15',
+          drink: '雪碧'
+        },{
+          name: '猪脚饭',
+          price: '13',
+          drink: '芬达'
+        }]
+      }
+    })
+  </script>
+</body>
+</html>

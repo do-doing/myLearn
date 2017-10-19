@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-model在其他元素及类型上的用法</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <div>
+      <h4>性别 <small> {{sex}}</small></h4>
+      <label>
+        <input v-model="sex" value="male" type="radio">男
+      </label>
+      <label>
+        <input v-model="sex" value="female" type="radio">女
+      </label>
+    </div>
+    <div>
+      <h4>爱好 <small> {{love}}</small></h4>
+      <label> 
+        <input v-model="love" value="male" type="checkbox">男
+      </label>
+      <label>
+        <input v-model="love" value="female" type="checkbox">女
+      </label>
+      <label>
+        <input v-model="love" value="other" type="checkbox">其他
+      </label>
+    </div>
+    <div>
+      <h4>来自<small> {{from}}</small></h4>
+      <select v-model="from">
+        <option value="1">地球</option>
+        <option value="2">太阳</option>
+        <option value="3">m78星云</option>
+      </select>
+    </div>
+    <div>
+      <h4>要去
+        <small> {{dest}}</small>
+      </h4>
+      <select v-model="dest" multiple>
+        <option value="1">珠海</option>
+        <option value="2">香港</option>
+        <option value="3">澳门</option>
+        <option value="4">江门</option>
+        <option value="5">广州</option>
+        <option value="6">深圳</option>
+      </select>
+    </div>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        sex: 'male',
+        love: [],
+        from:1,
+        dest:[]
+      }
+    })
+  </script>
+</body>
+
+</html>

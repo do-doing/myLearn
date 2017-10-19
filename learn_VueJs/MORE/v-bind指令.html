@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-bind指令 属性绑定</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+  <style>
+    .btn {
+      display: inline-block;
+      font-weight: normal;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      border: 1px solid transparent;
+      padding: 0.5rem 0.75rem;
+      font-size: 1rem;
+      line-height: 1.25;
+      border-radius: 0.25rem;
+      transition: all 0.15s ease-in-out;
+    }
+
+    .btn-danger {
+      color: #fff;
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+
+    .btn-danger:hover {
+      color: #fff;
+      background-color: #c82333;
+      border-color: #bd2130;
+    }
+
+    .active{
+      font-size: 20px;
+      color: yellowgreen;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h2> 绑定a标签 url</h2>
+    <select v-model="url">
+      <option value="http://baidu.com">百度</option>
+      <option value="http://taobao.com">淘宝</option>
+      <option value="http://qq.com">腾讯</option>
+    </select>
+
+    <a href="" v-bind:href="url">去吧</a>
+    <hr>
+    <h2>绑定图片 src</h2>
+    <img src="" alt="" v-bind:src="img">
+    <hr>
+    <h2>绑定元素 class</h2>
+    <button class="btn" v-bind:class="bClass">按钮类</button>
+    
+    <p v-bind:class="{active:isActive}">当条件为true时,才会添加active这个类</p>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        url: '',
+        img: 'https://dummyimage.com/100x100/ccc/000',
+        bClass: 'btn-lg btn-danger',
+        isActive:true
+      }
+    })
+  </script>
+</body>
+
+</html>

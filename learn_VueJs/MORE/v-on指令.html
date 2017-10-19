@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-on指令</title>
+      <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="btnClick">点我</button>
+    <br><br>
+    <div  v-on="{mouseenter: onEnter, mouseleave: onLeave}"  style="border:2px solid #ccc;width:100px;height:100px;">
+      {{str}}
+    </div>
+    <br>
+    <br>
+    <!-- .prevent 阻止默认事件 -->
+    <!-- .stop 停止事件冒泡 -->
+    <form v-on:submit.prevent="onSubmit" v-on:keyUp="onKeyUp" >
+      <input type="text" v-model="value">
+      <button type="submit">提交</button>
+    </form>
+  </div>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        str:'试试',
+        value:null
+      },
+      methods:{
+        btnClick:function(){
+          alert('点击了按钮')
+        },
+        onEnter:function(){
+          // console.log('进来')
+          this.str ='进来 mouseenter'
+        },
+        onLeave: function () {
+          // console.log('出去')
+          this.str = '出去 mouseleave'
+        },
+        onSubmit:function(e){
+          //禁止默认事件
+          //e.preventDefault();
+          alert('你提交了: '+this.value)          
+        },
+        onKeyUp:function(){
+          console.log('正在输入: '+this.value)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
