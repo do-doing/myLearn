@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组件：slot插槽</title>
+      <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+<body>
+  <h3>slot是父组件与子组件的通讯方式,可以将父组件的内容显示在子组件中</h3>
+  <div id="myApp">
+    <say-to pname="kevin">早饭吃了吗?</say-to>
+    <say-to pname="Philips">午饭吃了吗?</say-to>
+    <say-to pname="stephen">晚饭吃了吗?</say-to>
+  </div>
+  <script>
+    Vue.component('say-to',{
+      props:['pname'],
+      template:'<div>'
+        +'你好,<strong>{{pname}}</strong>!'
+        +'<slot></slot>'    //插入内容
+        +'</div>'
+    })
+    var myApp = new Vue({
+      el:'#myApp',
+    })
+  </script>
+</body>
+</html> 
