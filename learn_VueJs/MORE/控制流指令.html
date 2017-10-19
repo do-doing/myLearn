@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> 控制流指令</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+<body>
+  <div id="app">
+    <h2 v-if="role == 'admin'||role=='boss'">管理员你好</h2>
+    <h2 v-else-if="role == 'hr'">带查看简历列表</h2>
+    <h2 v-else>你没有权限访问此页面</h2>
+  </div>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        role:'admin'
+      }
+    })
+  </script>
+</body>
+</html>

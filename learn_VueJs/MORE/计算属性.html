@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>计算属性</title>
+      <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+<body>
+  <div id="app">
+    <table border='1' ng>
+      <thead>
+        <tr>
+          <th>学科</th>
+          <th>分数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>语文</td>
+          <td><input type="number" v-model.number="Chinese"></td>
+        </tr>
+        <tr>
+          <td>数学</td>
+          <td><input type="number" v-model.number="Math"> </td>
+        </tr>
+        <tr>
+          <td>英语</td>
+          <td><input type="number" v-model.number="English"> </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>总分:</td>
+          <td>{{sum}}</td>
+        </tr>
+        <tr>
+          <td>平均分:</td>
+          <td>{{average}}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        Chinese:90,
+        Math:95,
+        English:80
+      },
+      computed:{
+        sum:function(){
+          return this.Math + this.Chinese + this.English
+        },
+        average:function(){
+          return Math.round(this.sum/3)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
