@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组件 - 组件通信之子父通信</title>
+        <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+<body>
+  <div id="app">
+    <balance></balance>
+  </div>
+  <script>
+    //父组件
+    Vue.component('balance',{
+      template:`
+        <div>
+          <show v-on:show-balance="showBalance"></show>
+          <p v-if="flag">你的余额是{{data.a+data.b}}元</p>
+        </div>
+      `,
+      methods:{
+        //子组件的data
+        showBalance:function(data){
+          this.flag = true;
+          this.data = data
+        }
+      },
+      data:function(){
+        return {
+          flag: false
+        }
+      }
+    })
+
+    //子组件
+    Vue.component('show', {
+      template:'<button v-on:click="btnClick">显示余额</button>',
+      methods:{
+        btnClick:function(){
+          // 子组件触发事件,父组件接受事件
+          this.$emit('show-balance',{
+            a:100,
+            b:20
+          })
+        }
+      }
+    })
+
+
+
+    var app = new Vue({
+      el:'#app'
+    })
+  </script>
+</body>
+</html>

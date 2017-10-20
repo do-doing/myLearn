@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组件 - 组件通信之任意及平行</title>
+          <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+<body>
+  <div id="app">
+    <water></water>
+    <kevin></kevin>
+  </div>
+  <script>
+
+    //创建事件调度器
+    var Event = new Vue()
+
+    // 发出的
+    Vue.component('water',{
+      template:`<label>我说: <input v-on:keyup="on_change" v-model="i_said"/></label>`,
+      methods:{
+        on_change:function(){
+          Event.$emit('water-said-st',this.i_said)
+          //类似jq的trigger 触发一个事件
+        }
+      },
+      data:function(){
+        return {
+          i_said:'',
+        }
+      }
+    })
+
+    // 接收的
+    Vue.component('kevin',{
+      template:'<p>water说: {{she_said}}</p>',
+      data:function(){
+        return{
+          she_said:''
+        }
+      },
+      mounted:function(){
+        var me = this;
+        Event.$on('water-said-st',function(data){
+          me.she_said = data;
+        })
+      }
+    })
+
+
+    var app = new Vue({
+      el:'#app'
+    })
+  </script>
+</body>
+</html>

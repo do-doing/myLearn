@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组件 - 组件通信之父子通信</title>
+      <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+<body>
+  <div id="app">
+    <alert msg="我会被传进去"></alert>
+    <user username="kevin"></user>
+    </user>
+  </div>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      components:{
+        'alert':{
+          // 父 - 子 通信
+          props: ['msg'],          
+          template: '<button v-on:click="btnClick">探探探</button>',
+          methods: {
+            btnClick: function () {
+              alert(this.msg)
+            }
+          }
+        },
+        'user':{
+          // 父 - 子 通信
+          props:['username'],
+          template:'<a v-bind:href="\'../user/\'+username">@{{username}}</a>'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

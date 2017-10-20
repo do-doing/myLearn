@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组件 - 配置组件</title>
+          <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+  <style>
+    .btn{
+      background: #fff;
+      outline: none;
+      border: none;
+      padding: 10px 20px;
+      border:1px solid #eaeaea;
+      border-radius: 8px;
+    }
+    .btn.active{
+      color:#fff;
+      background-color:#d9534f;
+      border-color:#d43f3a
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <like></like>
+  </div>
+
+  <!-- 新的方法调用组件模板 -->
+  <template id="like-template-tpl">
+    <button v-on:click="toggle_like" class="btn btn-default" v-bind:class="{active:flag}">👍 {{like_count}}</button>
+  </template>
+
+  <script>
+    Vue.component('like',{
+      template:'#like-template-tpl',
+      data:function(){
+        return {
+          like_count:10,
+          flag:false,
+
+        }
+      },
+      methods:{
+        toggle_like:function(){
+          this.flag = !this.flag
+          if(this.flag){
+            this.like_count++  
+          }else{
+            this.like_count--  
+          }
+        }
+      }
+    })
+    var app = new Vue({
+      el:'#app'
+    })
+  </script>
+</body>
+</html>
