@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>过滤器</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+    <h4>长度</h4>
+    <input type="number" v-model.number="length">mm ≈
+    <b>{{ length | meter }}</b>
+
+    <h4>价格</h4>
+    <input type="number" v-model.number="price">
+    <b>{{ price | currency('MOP') }}</b>
+  </div>
+  <script>
+    Vue.filter('meter', function (val, unit) {
+      val = val || 0;   //没有值时,默认0
+      unit = unit || 'm'; //没有单位时,默认单位m
+      return (val/1000).toFixed(2) + unit   //保留小数点后两位
+    })
+
+    Vue.filter('currency', function (val, unit) {
+      val = val || 0;   //没有值时,默认0
+      unit = unit || '元'; //没有单位时,默认单位元
+      return val + unit
+    })
+
+
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        price: 299,
+        length: 1
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>混合 mixins</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <tooltip></tooltip>
+    <br>
+    <popup></popup>
+  </div>
+  <script>
+    var base = {
+      methods:{
+        show:function(){
+          this.visible = true;
+        },
+        hide:function(){
+          this.visible = false;          
+        },
+        toggle:function(){
+          this.visible = !this.visible;
+        }
+      },
+      data:function(){
+        return{
+          visible:false
+        }
+      }
+    }
+
+    Vue.component('tooltip', {
+      template: `
+        <div>
+          <span v-on:mouseenter="visible=true" v-on:mouseleave = "visible=false">移上来</span>
+          <div v-if="visible"  style="border:1px solid #ccc;">
+            <h4>title</h4>
+            <p>已经会了 HTML、CSS、JavaScript？即刻阅读指南开始构建应用！</p>
+          </div>
+        </div>
+      `,
+      mixins:[base]             //整合 methods 和 data
+    })
+    Vue.component('popup', {
+      template: `
+        <div>
+          <button v-on:click="toggle">Popup</button>
+          <div v-if="visible"  style="border:1px solid #ccc;">
+            <h4>title</h4>
+            <p>已经会了 HTML、CSS、JavaScript？即刻阅读指南开始构建应用！</p>
+          </div>
+        </div>
+      `,
+      mixins: [base]          //整合 methods 和 data
+    })
+    var app = new Vue({
+      el: '#app',
+      data: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>

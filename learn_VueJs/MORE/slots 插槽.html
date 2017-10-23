@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>slots 插槽</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <panel></panel>
+      <panel>
+        <div slot="title">1.我变成了一个动态的内容了,title</div>
+        <div slot="content">2.我变成了一个动态的内容了,content</div>
+        <div slot="footer">3.我变成了一个动态的内容了,footer</div>
+      </panel>  
+      
+    </div>
+  </div>
+  <template id="panel-tpl">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <!-- 默认值 -->
+        <slot name="title">
+          标题(此为默认内容)
+        </slot>
+      </div>
+      <div class="panel-body">
+        <!-- 默认值 -->
+        <slot name="content">
+           内容(此为默认内容)
+        </slot>
+      </div>
+      <div class="panel-footer">
+        <!-- 默认值 -->
+        <slot name="footer">更多信息(此为默认内容)</slot>   
+        
+      </div>
+    </div>
+  </template>
+  <script>
+    Vue.component('panel',{
+      template:'#panel-tpl'
+    })
+    var app = new Vue({
+      el:'#app',
+      data:{}
+    })
+  </script>
+</body>
+
+</html>
