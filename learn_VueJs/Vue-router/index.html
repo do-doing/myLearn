@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+  <script src="https://cdn.bootcss.com/vue-router/2.7.0/vue-router.js"></script>
+
+</head>
+
+<body>
+
+  <div id="app">
+    <div>
+      <router-link to="/">首頁</router-link>
+      <router-link to="/about">關于我們</router-link>
+    </div>
+    <div>
+      <router-view></router-view>      
+    </div>
+  </div>
+  <script>
+    var routes = [
+      {
+        path: '/',
+        component: {
+          template: `
+          <div>
+            <h1>HOME</h1>
+            <p>首頁</p>
+          </div>
+          `
+        }
+      }, {
+        path: '/about',
+        component: {
+          template: `
+          <div>
+            <h1>關于我們</h1>
+            <p>關于我們的東西</p>            
+          </div>
+          `
+        }
+      }
+    ];
+
+    var router = new VueRouter({
+      routes:routes
+    })
+
+    var app = new Vue({
+      el: '#app',
+      router:router
+    })
+  </script>
+</body>
+
+</html>
